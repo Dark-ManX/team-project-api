@@ -1,5 +1,6 @@
 const express = require("express");
 // const bodyParser = require("body-parser");
+// 15gyhIvZRzillrzY
 const logger = require("morgan");
 const cors = require("cors");
 
@@ -14,8 +15,6 @@ const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json);
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use((req, res, next) => {
@@ -24,7 +23,7 @@ app.use((req, res, next) => {
 });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(express.urlencoded({ extended: false }));
+
 app.use("/friends", express.static("public/IMG"));
 app.use("/photoNotice", express.static("public/photoNotice"));
 app.use("/photoPet", express.static("public/photoPet"));
@@ -43,7 +42,7 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
   const {
     status = 500,
-    message = "Server error.",
+    message = "Server error",
     code = err.status,
     result = err.result,
   } = err;
